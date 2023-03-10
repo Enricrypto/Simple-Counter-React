@@ -6,7 +6,27 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import Home from "./component/home.jsx";
+import Counter from "./component/counter.jsx"
 
-//render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+let counter = 0;
+setInterval(() => {
+    const cMillar = Math.floor(counter / 100000);
+    const dMillar = Math.floor(counter / 10000);
+    const uMillar = Math.floor(counter / 1000);
+    const centenas = Math.floor(counter / 100);
+    const decenas = Math.floor(counter / 10);
+    const unidades = Math.floor(counter / 1);
+    counter++; 
+    
+    ReactDOM.render(<Counter 
+        unidades={unidades}
+        decenas={decenas}
+        centenas={centenas}
+        uMillar={uMillar}
+        dMillar={dMillar}
+        cMillar={cMillar}
+    />,
+    document.querySelector("#app"));
+}, 1000); 
+
+
